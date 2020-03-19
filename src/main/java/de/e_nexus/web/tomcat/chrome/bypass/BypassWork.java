@@ -22,12 +22,13 @@ public final class BypassWork implements Serializable {
 	}
 
 	public void doBypass(ServletRequest request, ServletResponse response) throws IOException {
-		FileInputStream fis = new FileInputStream(overrideFile);
-		byte[] tmp = new byte[1024];
-		int read = 0;
-		ServletOutputStream outputStream = response.getOutputStream();
-		while ((read = fis.read(tmp)) > -0) {
-			outputStream.write(tmp, 0, read);
+		try (FileInputStream fis = new FileInputStream(overrideFile)) {
+			byte[] tmp = new byte[1024];
+			int read = 0;
+			ServletOutputStream outputStream = response.getOutputStream();
+			while ((read = fis.read(tmp)) > -0) {
+				outputStream.write(tmp, 0, read);
+			}
 		}
 	}
 
