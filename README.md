@@ -1,5 +1,7 @@
 ![Java CI with Maven](https://github.com/enexusde/devtools-tomcat-bypass/workflows/Java%20CI%20with%20Maven/badge.svg)
 
+Warning: This project is discontinued.
+
 # devtools-tomcat-bypass
 Chrome DevTools Workspace Bypass-Filter for /META-INF/resources/
 
@@ -36,3 +38,11 @@ WARNUNG: Missing property 'servlet.http.58bffe63930c023c54c9613ea73be874' for re
 2. Create a file `$user.home$/devtools.properties` and add this line:
 `servlet.http.58bffe63930c023c54c9613ea73be874=style.css`
 
+# Discontinued
+
+Since I do use tomcat I could bypass resources using tomcat's `src/main/resources/META-INF/context.xml` having content like this:
+```
+<Context path="/" copyXML="true" addWebinfClassesResources="true">
+	<PreResource base="D:\Workspace\project\src\main\webapp" internalPath="myfile.js"></PreResource>
+</Context>
+```
